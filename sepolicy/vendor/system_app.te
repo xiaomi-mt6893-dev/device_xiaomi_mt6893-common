@@ -1,3 +1,11 @@
 hal_client_domain(system_app, hal_mlipay)
 
 allow system_app vendor_gamekey_device:chr_file r_file_perms;
+
+# RGB LED control via sysfs for XiaomiParts
+# Allow traversing the sysfs_leds parent directory to reach brightness nodes
+allow system_app sysfs_leds:dir search;
+
+# Allow read/write to the custom-labeled LED brightness files
+allow system_app sysfs_leds_xiaomi:dir { open read search getattr };
+allow system_app sysfs_leds_xiaomi:file { open read write getattr };

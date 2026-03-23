@@ -16,10 +16,11 @@ genfscon sysfs /devices/platform/13000000.mali/js_ctx_scheduling_mode           
 genfscon sysfs /devices/platform/13000000.mali/js_scheduling_period                              u:object_r:vendor_sysfs_gpu:s0
 genfscon sysfs /devices/platform/13000000.mali/dvfs_period                                       u:object_r:vendor_sysfs_gpu:s0
 
-# Lights
-genfscon sysfs /devices/platform/11f00000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/blue   u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/11f00000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/green  u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/11f00000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/red    u:object_r:sysfs_leds:s0
+# Lights — labeled as sysfs_leds_xiaomi (custom type) instead of sysfs_leds
+# to allow system_app (XiaomiParts) write access without hitting AOSP neverallow
+genfscon sysfs /devices/platform/11f00000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/blue   u:object_r:sysfs_leds_xiaomi:s0
+genfscon sysfs /devices/platform/11f00000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/green  u:object_r:sysfs_leds_xiaomi:s0
+genfscon sysfs /devices/platform/11f00000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/red    u:object_r:sysfs_leds_xiaomi:s0
 
 # Power
 genfscon sysfs /devices/platform/11015000.i2c0/i2c-0/0-0035/power_supply/Charger_Identify        u:object_r:sysfs_power_supply:s0
